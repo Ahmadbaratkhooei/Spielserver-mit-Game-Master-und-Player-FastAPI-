@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  game-master:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: game-master
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./game_master.db:/app/game_master.db
+    environment:
+      - DATABASE_URL=sqlite:///./game_master.db
+    command: uvicorn game_master.main:app --host 0.0.0.0 --port 8000
+
+  player:
+    build:
+      context: ./player
+      dockerfile: Dockerfile
+    container_name: player
+    ports:
+      - "8001:8001"
+    environment:
+      - CONFIG_SERVER_A_URL=http://game-master:8000
+    command: uvicorn player_server:app --host 0.0.0.0 --port 8001
+    depends_on:
+      - game-master
