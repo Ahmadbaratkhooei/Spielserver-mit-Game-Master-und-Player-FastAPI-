@@ -1,4 +1,4 @@
-# Number-guessing-game
+# Spielserver mit Game Master und Player (FastAPI)
 
 # Game Master and Player
 This project consists of two servers: Game Master and Player. The Game Master server handles the game logic, generating a random number and accepting guesses, while the Player server interacts with the Game Master, submitting guesses to find the generated number. The servers are containerized using Docker and can be orchestrated using Docker Compose and This project is written with FastApi.
