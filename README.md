@@ -133,7 +133,7 @@ sudo systemctl status docker
    - Application load balancers
    - select mappings(need 2 AZ)
    - create security group for load balancers
-   - select tatget group(public and private subnet)
+   - select tatget group(public and private subnet).
    
 
 
